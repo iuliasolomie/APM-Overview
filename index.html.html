@@ -12,155 +12,137 @@
   --border:#e2e5e9;--border-light:#eef0f3;
   --text:#1a1d23;--text-secondary:#5f6878;--text-tertiary:#8a92a1;
   --accent:#2563eb;--accent-light:#eff4ff;--accent-hover:#1d4ed8;
-  --success:#16a34a;--success-light:#f0fdf4;--warning:#d97706;
+  --success:#16a34a;--warning:#d97706;
   --shadow-sm:0 1px 2px rgba(0,0,0,.04);--shadow-md:0 2px 8px rgba(0,0,0,.06);--shadow-lg:0 4px 16px rgba(0,0,0,.08);
   --radius-sm:6px;--radius-md:10px;--radius-lg:14px;
   --font:'IBM Plex Sans',-apple-system,sans-serif;--font-mono:'IBM Plex Mono',monospace;
-  --max-w:960px;--transition:180ms ease;
+  --max-w:960px;--tr:180ms ease;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
-.page-container{max-width:var(--max-w);margin:0 auto;padding:48px 24px 80px}
+.page{max-width:var(--max-w);margin:0 auto;padding:48px 24px 80px}
 
-/* Hero */
 .hero{margin-bottom:56px}
 .hero-label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:4px 10px;border-radius:4px;margin-bottom:16px}
 .hero h1{font-size:32px;font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
 .hero-sub{font-size:17px;color:var(--text-secondary);max-width:640px;line-height:1.6}
 
-/* Sections */
 .section{margin-bottom:56px}
-.section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border-light)}
-.section-number{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);padding:2px 8px;border-radius:4px}
-.section-title{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.sec-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border-light)}
+.sec-num{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);padding:2px 8px;border-radius:4px}
+.sec-title{font-size:22px;font-weight:600;letter-spacing:-.01em}
 
-/* Filter bar */
 .filter-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;padding:14px 16px;background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:var(--radius-md)}
-.filter-bar label{font-size:13px;font-weight:600;color:var(--text-secondary);white-space:nowrap}
+.filter-bar>label{font-size:13px;font-weight:600;color:var(--text-secondary);white-space:nowrap}
 .filter-search{position:relative;flex:1;min-width:200px}
-.filter-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-tertiary)}
-.filter-search input{width:100%;padding:8px 10px 8px 32px;font-family:var(--font);font-size:13px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);outline:none;transition:border var(--transition)}
+.filter-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-tertiary);pointer-events:none}
+.filter-search input{width:100%;padding:8px 10px 8px 32px;font-family:var(--font);font-size:13px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);outline:none}
 .filter-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
 
-/* Dropdown */
-.dropdown-wrapper{position:relative}
-.dropdown-trigger{display:flex;align-items:center;gap:6px;padding:8px 12px;font-family:var(--font);font-size:13px;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:border var(--transition);white-space:nowrap}
-.dropdown-trigger:hover{border-color:var(--accent)}
-.dropdown-trigger .count{background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:1px 6px;border-radius:10px}
-.dropdown-panel{position:absolute;top:calc(100% + 4px);left:0;min-width:220px;max-height:280px;overflow-y:auto;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);z-index:100;padding:6px;display:none}
-.dropdown-panel.open{display:block}
-.dropdown-panel .option{display:flex;align-items:center;gap:8px;padding:7px 10px;font-size:13px;border-radius:4px;cursor:pointer;transition:background var(--transition)}
-.dropdown-panel .option:hover{background:var(--bg-muted)}
-.checkbox{width:16px;height:16px;border-radius:3px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all var(--transition);flex-shrink:0}
-.checkbox.checked{background:var(--accent);border-color:var(--accent);color:#fff}
-.region-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-tertiary);padding:8px 10px 4px}
+.dd-wrap{position:relative}
+.dd-btn{display:flex;align-items:center;gap:6px;padding:8px 12px;font-family:var(--font);font-size:13px;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap}
+.dd-btn:hover{border-color:var(--accent)}
+.dd-btn .badge{background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:1px 6px;border-radius:10px;display:none}
+.dd-panel{position:absolute;top:calc(100% + 4px);left:0;min-width:220px;max-height:280px;overflow-y:auto;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);z-index:200;padding:6px;display:none}
+.dd-panel.open{display:block}
+.dd-opt{display:flex;align-items:center;gap:8px;padding:7px 10px;font-size:13px;border-radius:4px;cursor:pointer;user-select:none}
+.dd-opt:hover{background:var(--bg-muted)}
+.chk{width:16px;height:16px;border-radius:3px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--tr)}
+.chk.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grp-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-tertiary);padding:8px 10px 4px}
 
-/* Active filters */
-.active-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.filter-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;font-weight:500;background:var(--accent-light);color:var(--accent);border-radius:20px;cursor:pointer;border:none;font-family:var(--font)}
-.filter-tag:hover{background:#dbe8ff}
-.clear-all{font-size:12px;color:var(--text-tertiary);cursor:pointer;padding:4px 8px;border:none;background:none;font-family:var(--font)}
-.clear-all:hover{color:var(--accent)}
-.results-count{font-size:13px;color:var(--text-tertiary);margin-bottom:16px}
+.active-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;min-height:0}
+.ftag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;font-weight:500;background:var(--accent-light);color:var(--accent);border-radius:20px;cursor:pointer;border:none;font-family:var(--font)}
+.ftag:hover{background:#dbe8ff}
+.clear-btn{font-size:12px;color:var(--text-tertiary);cursor:pointer;padding:4px 8px;border:none;background:none;font-family:var(--font)}
+.clear-btn:hover{color:var(--accent)}
+.res-count{font-size:13px;color:var(--text-tertiary);margin-bottom:16px}
 
-/* APM Cards */
 .apm-grid{display:flex;flex-direction:column;gap:20px}
-.apm-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-card);overflow:hidden;transition:box-shadow var(--transition),border-color var(--transition)}
+.apm-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-card);overflow:hidden}
 .apm-card:hover{border-color:#d0d5dd;box-shadow:var(--shadow-md)}
-.apm-card-header{display:flex;align-items:flex-start;gap:16px;padding:24px 24px 0}
+.card-head{display:flex;align-items:flex-start;gap:16px;padding:24px 24px 0}
 .apm-logo{width:48px;height:48px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#fff;flex-shrink:0}
-.apm-header-text{flex:1}
-.apm-header-text h3{font-size:18px;font-weight:600;margin-bottom:4px}
+.head-text{flex:1}
+.head-text h3{font-size:18px;font-weight:600;margin-bottom:4px}
 .apm-hook{font-size:14px;color:var(--text-secondary);line-height:1.5}
-.apm-expand-btn{padding:6px 12px;font-family:var(--font);font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);border:none;border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap;transition:background var(--transition)}
-.apm-expand-btn:hover{background:#dbe8ff}
-.apm-meta-row{display:flex;gap:16px;padding:16px 24px;flex-wrap:wrap;align-items:center}
+.expand-btn{padding:6px 12px;font-family:var(--font);font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);border:none;border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap}
+.expand-btn:hover{background:#dbe8ff}
+.meta-row{display:flex;gap:12px;padding:16px 24px;flex-wrap:wrap;align-items:center}
 .meta-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary);background:var(--bg-subtle);padding:4px 10px;border-radius:20px;font-weight:500}
-.detail-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;font-size:11px;font-weight:500;border-radius:4px;margin:2px 4px 2px 0}
-.tag-api{background:#eff4ff;color:#2563eb}
-.tag-nocode{background:#f0fdf4;color:#16a34a}
-.tag-mobile{background:#fef3c7;color:#d97706}
-.tag-yes{color:var(--success)}
-.tag-no{color:var(--text-tertiary)}
+.dtag{display:inline-flex;padding:3px 8px;font-size:11px;font-weight:500;border-radius:4px;margin:2px 2px 2px 0}
+.t-api{background:#eff4ff;color:#2563eb}
+.t-nc{background:#f0fdf4;color:#16a34a}
+.t-mob{background:#fef3c7;color:#d97706}
+.t-yes{color:var(--success)}
+.t-no{color:var(--text-tertiary)}
 
-/* Detail panel */
-.apm-detail{border-top:1px solid var(--border-light);padding:24px;background:var(--bg-subtle);display:none}
-.apm-detail.open{display:block}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:640px){.detail-grid{grid-template-columns:1fr}}
-.detail-block h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-tertiary);margin-bottom:8px}
-.detail-block ul{list-style:none;padding:0}
-.detail-block li{font-size:13px;color:var(--text);padding:3px 0;display:flex;align-items:flex-start;gap:6px}
-.detail-block li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0}
-.tx-table{width:100%;font-size:13px;border-collapse:collapse}
-.tx-table td{padding:6px 0;vertical-align:top;border-bottom:1px solid var(--border-light)}
-.tx-table td:first-child{font-weight:500;color:var(--text-secondary);width:120px;white-space:nowrap}
-.currency-chip{font-size:12px;font-family:var(--font-mono);background:var(--bg);padding:2px 8px;border-radius:4px;border:1px solid var(--border-light);display:inline-block;margin:2px}
-.currency-row{display:flex;flex-wrap:wrap;gap:0}
+.detail{border-top:1px solid var(--border-light);padding:24px;background:var(--bg-subtle);display:none}
+.detail.open{display:block}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:640px){.d-grid{grid-template-columns:1fr}}
+.d-block h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-tertiary);margin-bottom:8px}
+.d-block ul{list-style:none}
+.d-block li{font-size:13px;padding:3px 0;display:flex;align-items:flex-start;gap:6px}
+.d-block li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0}
+.tx-tbl{width:100%;font-size:13px;border-collapse:collapse}
+.tx-tbl td{padding:6px 0;vertical-align:top;border-bottom:1px solid var(--border-light)}
+.tx-tbl td:first-child{font-weight:500;color:var(--text-secondary);width:120px;white-space:nowrap}
+.cur-chip{font-size:12px;font-family:var(--font-mono);background:var(--bg);padding:2px 8px;border-radius:4px;border:1px solid var(--border-light);display:inline-block;margin:2px}
 
-/* Quick links */
-.quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-@media(max-width:640px){.quick-links{grid-template-columns:1fr}}
-.quick-link{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);font-size:13px;font-weight:500;transition:all var(--transition)}
-.quick-link:hover{border-color:var(--accent);color:var(--accent)}
+.q-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+@media(max-width:640px){.q-links{grid-template-columns:1fr}}
+.q-link{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);font-size:13px;font-weight:500}
+.q-link:hover{border-color:var(--accent);color:var(--accent)}
 
 .cta-banner{margin-top:16px;padding:14px 20px;background:linear-gradient(135deg,var(--accent-light),#f0f4ff);border:1px solid #d0dcf5;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:space-between;gap:12px}
-.cta-banner p{font-size:14px;font-weight:500;color:var(--text)}
-.cta-btn{padding:8px 16px;font-family:var(--font);font-size:13px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap;transition:background var(--transition)}
+.cta-banner p{font-size:14px;font-weight:500}
+.cta-btn{padding:8px 16px;font-family:var(--font);font-size:13px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer}
 .cta-btn:hover{background:var(--accent-hover)}
 
-/* Video */
-.video-placeholder{background:var(--bg-muted);border:1px solid var(--border);border-radius:var(--radius-md);padding:60px 24px;text-align:center;margin-bottom:24px}
+.vid-ph{background:var(--bg-muted);border:1px solid var(--border);border-radius:var(--radius-md);padding:60px 24px;text-align:center;margin-bottom:24px}
 .play-circle{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
-.video-placeholder p{font-size:14px;color:var(--text-secondary)}
+.vid-ph p{font-size:14px;color:var(--text-secondary)}
 
-/* Resources */
-.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:640px){.resources-grid{grid-template-columns:1fr}}
-.resource-card{padding:20px;border:1px solid var(--border);border-radius:var(--radius-md);text-decoration:none;color:var(--text);transition:all var(--transition);display:block}
-.resource-card:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
-.resource-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
-.resource-card p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:640px){.res-grid{grid-template-columns:1fr}}
+.res-card{padding:20px;border:1px solid var(--border);border-radius:var(--radius-md);text-decoration:none;color:var(--text);display:block}
+.res-card:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.res-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.res-card p{font-size:13px;color:var(--text-secondary);line-height:1.5}
 
-/* Brands */
 .brands-row{display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap;padding:32px 0}
-.brand-placeholder{width:100px;height:40px;background:var(--bg-muted);border:1px solid var(--border-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-tertiary);font-weight:500}
+.brand-ph{width:100px;height:40px;background:var(--bg-muted);border:1px solid var(--border-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-tertiary);font-weight:500}
 .brands-note{font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic}
 
-/* FAQ */
 .faq-list{display:flex;flex-direction:column;gap:4px}
-.faq-item{border:1px solid var(--border-light);border-radius:var(--radius-sm);overflow:hidden;transition:border-color var(--transition)}
+.faq-item{border:1px solid var(--border-light);border-radius:var(--radius-sm);overflow:hidden}
 .faq-item:hover{border-color:var(--border)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;font-family:var(--font);font-size:14px;font-weight:500;color:var(--text);background:none;border:none;cursor:pointer;text-align:left}
-.faq-q svg{flex-shrink:0;color:var(--text-tertiary);transition:transform var(--transition)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;font-family:var(--font);font-size:14px;font-weight:500;color:var(--text);background:none;border:none;cursor:pointer;text-align:left;gap:8px}
+.faq-q svg{flex-shrink:0;color:var(--text-tertiary);transition:transform var(--tr)}
 .faq-q.open svg{transform:rotate(90deg)}
 .faq-a{padding:0 16px 14px;font-size:13px;color:var(--text-secondary);line-height:1.6;display:none}
 .faq-a.open{display:block}
 
-/* NPS */
-.nps-bar{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px 24px;text-align:center}
-.nps-bar p{font-size:14px;color:var(--text-secondary);margin-bottom:12px}
+.nps-wrap{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px 24px;text-align:center}
+.nps-wrap p{font-size:14px;color:var(--text-secondary);margin-bottom:12px}
 .nps-scores{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.nps-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:var(--font);font-size:13px;font-weight:500;color:var(--text);cursor:pointer;transition:all var(--transition)}
+.nps-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:var(--font);font-size:13px;font-weight:500;color:var(--text);cursor:pointer}
 .nps-btn:hover{border-color:var(--accent);color:var(--accent)}
-.nps-btn.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nps-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .nps-labels{display:flex;justify-content:space-between;max-width:420px;margin:8px auto 0;font-size:11px;color:var(--text-tertiary)}
-.nps-thankyou{padding:12px;font-size:14px;color:var(--success);font-weight:500}
+.nps-ty{padding:12px;font-size:14px;color:var(--success);font-weight:500}
 
-/* No results */
-.no-results{padding:48px 24px;text-align:center;color:var(--text-tertiary);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius-md)}
-
-/* SVG icons inline */
-.icon{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.no-res{padding:48px 24px;text-align:center;color:var(--text-tertiary);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius-md)}
 </style>
 </head>
 <body>
-<div class="page-container">
+<div class="page">
 
   <!-- Hero -->
   <div class="hero">
     <div class="hero-label">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       Payment Methods
     </div>
     <h1>Alternative Payment Methods &amp; Wallets</h1>
@@ -169,7 +151,7 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 
   <!-- Video -->
   <div class="section">
-    <div class="video-placeholder">
+    <div class="vid-ph">
       <div class="play-circle">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </div>
@@ -180,43 +162,43 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 
   <!-- Payment Methods -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-number">01</span>
-      <h2 class="section-title">Payment Methods</h2>
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Payment Methods</h2>
     </div>
-
     <div class="filter-bar">
       <label>Filter by:</label>
-      <div class="dropdown-wrapper" id="region-dd">
-        <button class="dropdown-trigger" onclick="toggleDropdown('region-panel')">
-          Region <span class="count" id="region-count" style="display:none">0</span>
+      <div class="dd-wrap">
+        <button class="dd-btn" id="region-btn">
+          Region
+          <span class="badge" id="region-badge">0</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="dropdown-panel" id="region-panel"></div>
+        <div class="dd-panel" id="region-panel"></div>
       </div>
-      <div class="dropdown-wrapper" id="country-dd">
-        <button class="dropdown-trigger" onclick="toggleDropdown('country-panel')">
-          Country <span class="count" id="country-count" style="display:none">0</span>
+      <div class="dd-wrap">
+        <button class="dd-btn" id="country-btn">
+          Country
+          <span class="badge" id="country-badge">0</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="dropdown-panel" id="country-panel"></div>
+        <div class="dd-panel" id="country-panel"></div>
       </div>
       <div class="filter-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search-input" placeholder="Search country or payment method..." oninput="applyFilters()"/>
+        <input type="text" id="search-input" placeholder="Search country or payment method..."/>
       </div>
     </div>
-
-    <div id="active-filters" class="active-filters" style="display:none"></div>
-    <p class="results-count" id="results-count"></p>
+    <div class="active-filters" id="active-filters"></div>
+    <p class="res-count" id="res-count"></p>
     <div class="apm-grid" id="apm-grid"></div>
   </div>
 
-  <!-- Trusted Brands -->
+  <!-- Brands -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-number">02</span>
-      <h2 class="section-title">Brands Who Trust Us</h2>
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Brands Who Trust Us</h2>
     </div>
     <div class="brands-row" id="brands-row"></div>
     <p class="brands-note">Pending: confirm logo usage rights with local teams</p>
@@ -224,39 +206,39 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 
   <!-- Resources -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-number">03</span>
-      <h2 class="section-title">Useful Resources</h2>
+    <div class="sec-header">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Useful Resources</h2>
     </div>
-    <div class="resources-grid">
-      <a href="#" class="resource-card"><h4>Getting Started Guide</h4><p>Step-by-step onboarding for your first APM integration.</p></a>
-      <a href="#" class="resource-card"><h4>API Reference</h4><p>Complete API documentation for Checkout and Ecom APIs.</p></a>
-      <a href="#" class="resource-card"><h4>Reporting &amp; Analytics</h4><p>Combined and per-APM reports, exports, and dashboards.</p></a>
-      <a href="#" class="resource-card"><h4>Sandbox &amp; Testing</h4><p>Test payment methods in our sandbox environment before going live.</p></a>
-      <a href="#" class="resource-card"><h4>Integration Types Comparison</h4><p>Checkout API vs Ecom API vs No-Code — which is right for you?</p></a>
-      <a href="#" class="resource-card"><h4>Security &amp; Compliance</h4><p>PCI compliance, data handling, and security best practices.</p></a>
+    <div class="res-grid">
+      <a href="#" class="res-card"><h4>Getting Started Guide</h4><p>Step-by-step onboarding for your first APM integration.</p></a>
+      <a href="#" class="res-card"><h4>API Reference</h4><p>Complete API documentation for Checkout and Ecom APIs.</p></a>
+      <a href="#" class="res-card"><h4>Reporting &amp; Analytics</h4><p>Combined and per-APM reports, exports, and dashboards.</p></a>
+      <a href="#" class="res-card"><h4>Sandbox &amp; Testing</h4><p>Test payment methods in our sandbox environment before going live.</p></a>
+      <a href="#" class="res-card"><h4>Integration Types Comparison</h4><p>Checkout API vs Ecom API vs No-Code — which is right for you?</p></a>
+      <a href="#" class="res-card"><h4>Security &amp; Compliance</h4><p>PCI compliance, data handling, and security best practices.</p></a>
     </div>
   </div>
 
   <!-- FAQ -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-number">04</span>
-      <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="sec-header">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Frequently Asked Questions</h2>
     </div>
     <div class="faq-list" id="faq-list"></div>
   </div>
 
   <!-- NPS -->
   <div class="section">
-    <div class="nps-bar" id="nps-bar"></div>
+    <div class="nps-wrap" id="nps-wrap"></div>
   </div>
 
-</div>
+</div><!-- end .page -->
 
 <script>
 // ── DATA ──────────────────────────────────────────────────────────────────
-const REGIONS = {
+var REGIONS = {
   "Europe": ["Germany","France","United Kingdom","Spain","Italy","Netherlands","Belgium","Austria","Sweden","Norway","Denmark","Finland","Poland","Portugal","Switzerland","Ireland"],
   "North America": ["United States","Canada","Mexico"],
   "Latin America": ["Brazil","Argentina","Colombia","Chile","Peru"],
@@ -264,365 +246,344 @@ const REGIONS = {
   "Middle East & Africa": ["UAE","Saudi Arabia","South Africa","Israel","Nigeria"]
 };
 
-const PAYMENT_METHODS = [
-  {
-    id:"klarna",name:"Klarna",logo:"K",color:"#FFB3C7",
-    hook:"Let your customers buy now, pay later — boost average order value by up to 45%.",
-    description:"Klarna provides flexible payment options including Pay Later, Slice It, and Pay Now. Ideal for merchants looking to increase conversion and average order value.",
-    regions:["Europe","North America"],
-    countries:["Germany","France","United Kingdom","Sweden","Norway","Denmark","Finland","Netherlands","Belgium","Austria","Spain","Italy","United States","Canada","Australia"],
-    currencies:["EUR","GBP","SEK","NOK","DKK","USD","CAD","AUD","CHF"],
-    integrationTypes:{api:true,noCode:true,mobile:true},
-    apiOptions:["Checkout API (iframe)","Checkout API (redirect)","Ecom API"],
-    noCodeOptions:["Pay by Link","Shopify","WooCommerce","Magento"],
-    mobileOptions:["iOS SDK","Android SDK"],
-    features:["Buy Now Pay Later","Slice it (3, 6, 12, 18, 24, 36 months)","Financing","Fraud Prevention","Reporting & Analytics"],
-    transactionTypes:{sale:true,authorization:"Valid 30 days (extension possible)",capture:"Full capture or 1 partial capture (remaining released)",refund:"Full refund, multiple partial refunds — timeframe based on local legal requirements and merchant T&Cs",dispute:true},
-    minAmount:"Varies by region — see Klarna detail page",
-    authorizationTime:"Real-time (< 2 seconds)",
-    refundTime:"Custom to merchant T&Cs and country-specific regulation",
-    quickLinks:{overview:"#",integration:"#",reporting:"#"}
-  },
-  {
-    id:"paypal",name:"PayPal",logo:"P",color:"#009CDE",
-    hook:"Reach 400M+ active accounts worldwide — the most recognized digital wallet globally.",
-    description:"PayPal enables merchants to accept payments from one of the world's largest digital wallet networks with buyer protection and one-click checkout.",
-    regions:["Europe","North America","Latin America","Asia Pacific","Middle East & Africa"],
-    countries:["United States","Canada","United Kingdom","Germany","France","Spain","Italy","Netherlands","Australia","Brazil","Mexico","Japan","Singapore","India"],
-    currencies:["USD","EUR","GBP","CAD","AUD","BRL","MXN","JPY","SGD","INR","CHF","SEK","NOK","DKK","PLN","HKD"],
-    integrationTypes:{api:true,noCode:true,mobile:true},
-    apiOptions:["Checkout API (redirect)","Ecom API"],
-    noCodeOptions:["Pay by Link","Shopify","WooCommerce","Magento"],
-    mobileOptions:["iOS SDK","Android SDK"],
-    features:["One-click Checkout","Buyer Protection","PayPal Credit","Fraud Prevention","Reporting & Analytics"],
-    transactionTypes:{sale:true,authorization:"Valid 29 days",capture:"Full or partial capture",refund:"Full refund, multiple partial refunds within 180 days",dispute:true},
-    minAmount:"$1.00 USD equivalent",
-    authorizationTime:"Real-time (< 2 seconds)",
-    refundTime:"3–5 business days to buyer",
-    quickLinks:{overview:"#",integration:"#",reporting:"#"}
-  },
-  {
-    id:"ideal",name:"iDEAL",logo:"iD",color:"#CC0066",
-    hook:"The #1 payment method in the Netherlands — used for 70% of all Dutch e-commerce transactions.",
-    description:"iDEAL is a bank-redirect payment method that allows Dutch consumers to pay directly from their bank account in real-time.",
-    regions:["Europe"],
-    countries:["Netherlands"],
-    currencies:["EUR"],
-    integrationTypes:{api:true,noCode:true,mobile:false},
-    apiOptions:["Checkout API (redirect)","Ecom API"],
-    noCodeOptions:["Pay by Link","Shopify","WooCommerce"],
-    mobileOptions:[],
-    features:["Bank Redirect","Real-time Confirmation","Reporting & Analytics"],
-    transactionTypes:{sale:true,authorization:"N/A — immediate settlement",capture:"N/A",refund:"Full refund, partial refunds supported",dispute:false},
-    minAmount:"€0.01",
-    authorizationTime:"Real-time",
-    refundTime:"1–2 business days",
-    quickLinks:{overview:"#",integration:"#",reporting:"#"}
-  },
-  {
-    id:"sofort",name:"Sofort / Klarna Pay Now",logo:"S",color:"#EF6C00",
-    hook:"Trusted bank transfer for DACH markets — instant confirmation, no chargebacks.",
-    description:"Sofort (now Klarna Pay Now) is a direct bank transfer method popular in Germany, Austria, Switzerland and Belgium.",
-    regions:["Europe"],
-    countries:["Germany","Austria","Switzerland","Belgium","Netherlands"],
-    currencies:["EUR","CHF"],
-    integrationTypes:{api:true,noCode:true,mobile:false},
-    apiOptions:["Checkout API (redirect)"],
-    noCodeOptions:["Pay by Link","Shopify"],
-    mobileOptions:[],
-    features:["Bank Transfer","Instant Confirmation","No Chargebacks","Reporting & Analytics"],
-    transactionTypes:{sale:true,authorization:"N/A",capture:"N/A",refund:"Full and partial refunds",dispute:false},
-    minAmount:"€0.10",
-    authorizationTime:"Real-time",
-    refundTime:"3–5 business days",
-    quickLinks:{overview:"#",integration:"#",reporting:"#"}
-  },
-  {
-    id:"bancontact",name:"Bancontact",logo:"B",color:"#005498",
-    hook:"Belgium's most popular payment method — 80%+ of Belgian cards are Bancontact-enabled.",
-    description:"Bancontact is the dominant debit card scheme in Belgium, enabling secure, real-time payments for Belgian consumers.",
-    regions:["Europe"],
-    countries:["Belgium"],
-    currencies:["EUR"],
-    integrationTypes:{api:true,noCode:true,mobile:true},
-    apiOptions:["Checkout API (redirect)","Ecom API"],
-    noCodeOptions:["Pay by Link","Shopify","WooCommerce"],
-    mobileOptions:["iOS SDK","Android SDK"],
-    features:["Debit Card","QR Code Payments","Mobile App Payments","Reporting & Analytics"],
-    transactionTypes:{sale:true,authorization:"N/A — immediate settlement",capture:"N/A",refund:"Full and partial refunds",dispute:false},
-    minAmount:"€0.01",
-    authorizationTime:"Real-time",
-    refundTime:"2–3 business days",
-    quickLinks:{overview:"#",integration:"#",reporting:"#"}
-  }
+var PM = [
+  {id:"klarna",name:"Klarna",logo:"K",color:"#FFB3C7",
+   hook:"Let your customers buy now, pay later — boost average order value by up to 45%.",
+   desc:"Klarna provides flexible payment options including Pay Later, Slice It, and Pay Now. Ideal for merchants looking to increase conversion and average order value.",
+   regions:["Europe","North America"],
+   countries:["Germany","France","United Kingdom","Sweden","Norway","Denmark","Finland","Netherlands","Belgium","Austria","Spain","Italy","United States","Canada","Australia"],
+   currencies:["EUR","GBP","SEK","NOK","DKK","USD","CAD","AUD","CHF"],
+   intg:{api:true,nc:true,mob:true},
+   apiOpts:["Checkout API (iframe)","Checkout API (redirect)","Ecom API"],
+   ncOpts:["Pay by Link","Shopify","WooCommerce","Magento"],
+   mobOpts:["iOS SDK","Android SDK"],
+   features:["Buy Now Pay Later","Slice it (3, 6, 12, 18, 24, 36 months)","Financing","Fraud Prevention","Reporting & Analytics"],
+   tx:{sale:true,auth:"Valid 30 days (extension possible)",cap:"Full capture or 1 partial capture (remaining released)",ref:"Full refund, multiple partial refunds — timeframe based on local legal requirements and merchant T&Cs",disp:true},
+   minAmt:"Varies by region — see Klarna detail page",
+   authTime:"Real-time (< 2 seconds)",
+   refTime:"Custom to merchant T&Cs and country-specific regulation",
+   links:{overview:"#",integration:"#",reporting:"#"}},
+  {id:"paypal",name:"PayPal",logo:"P",color:"#009CDE",
+   hook:"Reach 400M+ active accounts worldwide — the most recognized digital wallet globally.",
+   desc:"PayPal enables merchants to accept payments from one of the world's largest digital wallet networks with buyer protection and one-click checkout.",
+   regions:["Europe","North America","Latin America","Asia Pacific","Middle East & Africa"],
+   countries:["United States","Canada","United Kingdom","Germany","France","Spain","Italy","Netherlands","Australia","Brazil","Mexico","Japan","Singapore","India"],
+   currencies:["USD","EUR","GBP","CAD","AUD","BRL","MXN","JPY","SGD","INR","CHF","SEK","NOK","DKK","PLN","HKD"],
+   intg:{api:true,nc:true,mob:true},
+   apiOpts:["Checkout API (redirect)","Ecom API"],
+   ncOpts:["Pay by Link","Shopify","WooCommerce","Magento"],
+   mobOpts:["iOS SDK","Android SDK"],
+   features:["One-click Checkout","Buyer Protection","PayPal Credit","Fraud Prevention","Reporting & Analytics"],
+   tx:{sale:true,auth:"Valid 29 days",cap:"Full or partial capture",ref:"Full refund, multiple partial refunds within 180 days",disp:true},
+   minAmt:"$1.00 USD equivalent",
+   authTime:"Real-time (< 2 seconds)",
+   refTime:"3-5 business days to buyer",
+   links:{overview:"#",integration:"#",reporting:"#"}},
+  {id:"ideal",name:"iDEAL",logo:"iD",color:"#CC0066",
+   hook:"The #1 payment method in the Netherlands — used for 70% of all Dutch e-commerce transactions.",
+   desc:"iDEAL is a bank-redirect payment method that allows Dutch consumers to pay directly from their bank account in real-time.",
+   regions:["Europe"],
+   countries:["Netherlands"],
+   currencies:["EUR"],
+   intg:{api:true,nc:true,mob:false},
+   apiOpts:["Checkout API (redirect)","Ecom API"],
+   ncOpts:["Pay by Link","Shopify","WooCommerce"],
+   mobOpts:[],
+   features:["Bank Redirect","Real-time Confirmation","Reporting & Analytics"],
+   tx:{sale:true,auth:"N/A - immediate settlement",cap:"N/A",ref:"Full refund, partial refunds supported",disp:false},
+   minAmt:"EUR 0.01",
+   authTime:"Real-time",
+   refTime:"1-2 business days",
+   links:{overview:"#",integration:"#",reporting:"#"}},
+  {id:"sofort",name:"Sofort / Klarna Pay Now",logo:"S",color:"#EF6C00",
+   hook:"Trusted bank transfer for DACH markets — instant confirmation, no chargebacks.",
+   desc:"Sofort (now Klarna Pay Now) is a direct bank transfer method popular in Germany, Austria, Switzerland and Belgium.",
+   regions:["Europe"],
+   countries:["Germany","Austria","Switzerland","Belgium","Netherlands"],
+   currencies:["EUR","CHF"],
+   intg:{api:true,nc:true,mob:false},
+   apiOpts:["Checkout API (redirect)"],
+   ncOpts:["Pay by Link","Shopify"],
+   mobOpts:[],
+   features:["Bank Transfer","Instant Confirmation","No Chargebacks","Reporting & Analytics"],
+   tx:{sale:true,auth:"N/A",cap:"N/A",ref:"Full and partial refunds",disp:false},
+   minAmt:"EUR 0.10",
+   authTime:"Real-time",
+   refTime:"3-5 business days",
+   links:{overview:"#",integration:"#",reporting:"#"}},
+  {id:"bancontact",name:"Bancontact",logo:"B",color:"#005498",
+   hook:"Belgium's most popular payment method — 80%+ of Belgian cards are Bancontact-enabled.",
+   desc:"Bancontact is the dominant debit card scheme in Belgium, enabling secure, real-time payments for Belgian consumers.",
+   regions:["Europe"],
+   countries:["Belgium"],
+   currencies:["EUR"],
+   intg:{api:true,nc:true,mob:true},
+   apiOpts:["Checkout API (redirect)","Ecom API"],
+   ncOpts:["Pay by Link","Shopify","WooCommerce"],
+   mobOpts:["iOS SDK","Android SDK"],
+   features:["Debit Card","QR Code Payments","Mobile App Payments","Reporting & Analytics"],
+   tx:{sale:true,auth:"N/A - immediate settlement",cap:"N/A",ref:"Full and partial refunds",disp:false},
+   minAmt:"EUR 0.01",
+   authTime:"Real-time",
+   refTime:"2-3 business days",
+   links:{overview:"#",integration:"#",reporting:"#"}}
 ];
 
-const TRUSTED_BRANDS = ["Brand A","Brand B","Brand C","Brand D","Brand E","Brand F","Brand G"];
+var BRANDS = ["Brand A","Brand B","Brand C","Brand D","Brand E","Brand F","Brand G"];
 
-const FAQ_ITEMS = [
+var FAQ = [
   {q:"What are the PCI compliance requirements for APMs?",a:"Alternative Payment Methods generally don't require PCI DSS compliance since card data is not handled. However, you must still ensure secure data transmission (TLS 1.2+) and follow our security best practices. See our Security & Compliance guide for details."},
-  {q:"Can I get combined reporting across all payment methods?",a:"Yes. Our reporting suite offers both combined multi-APM reports and individual payment method reports. You can access these via the Merchant Portal or configure automated report delivery via SFTP/API. See the Reporting section for each APM."},
+  {q:"Can I get combined reporting across all payment methods?",a:"Yes. Our reporting suite offers both combined multi-APM reports and individual payment method reports. You can access these via the Merchant Portal or configure automated report delivery via SFTP/API."},
   {q:"What fees apply to APM transactions?",a:"Fees vary by payment method, volume, and agreement. Contact your account manager for your specific rate card, or refer to the Pricing section in your merchant agreement."},
-  {q:"What are the steps to activate a new payment method?",a:"1. Contact your account manager or submit a request via the Merchant Portal. 2. Complete the APM-specific onboarding form. 3. Test in sandbox environment. 4. Go live after certification. Average activation time: 5–10 business days depending on the APM."},
-  {q:"Do I need a separate integration for each payment method?",a:"No. Our Checkout API supports all payment methods through a single integration. You configure which APMs to display at checkout, and we handle the routing. Alternatively, you can use our Ecom API for granular control over each payment method."},
-  {q:"What is the difference between Checkout API and Ecom API?",a:"The Checkout API provides a pre-built checkout experience (iframe or redirect) with minimal development effort. The Ecom API gives you full control to build a custom checkout UI and handle payment flows server-to-server. Both support all APMs."}
+  {q:"What are the steps to activate a new payment method?",a:"1. Contact your account manager or submit a request via the Merchant Portal. 2. Complete the APM-specific onboarding form. 3. Test in sandbox environment. 4. Go live after certification. Average activation time: 5-10 business days."},
+  {q:"Do I need a separate integration for each payment method?",a:"No. Our Checkout API supports all payment methods through a single integration. You configure which APMs to display at checkout, and we handle the routing."},
+  {q:"What is the difference between Checkout API and Ecom API?",a:"The Checkout API provides a pre-built checkout experience (iframe or redirect) with minimal development effort. The Ecom API gives you full control to build a custom checkout UI and handle payment flows server-to-server."}
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────
-const state = { regions: [], countries: [] };
+var selRegions = [];
+var selCountries = [];
 
 // ── ICONS ─────────────────────────────────────────────────────────────────
-const iconCheck = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>`;
-const iconX    = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
-const iconArr  = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
-const iconChevR= `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>`;
+var ICO_CHECK = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>';
+var ICO_X     = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+var ICO_ARR   = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+var ICO_CHEVR = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>';
+var ICO_GLOBE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
+var ICO_CLOCK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
 
-// ── DROPDOWN ──────────────────────────────────────────────────────────────
-function toggleDropdown(panelId) {
-  const panel = document.getElementById(panelId);
-  const isOpen = panel.classList.contains('open');
-  document.querySelectorAll('.dropdown-panel.open').forEach(p => p.classList.remove('open'));
+// ── UTILS ─────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function safeId(s) { return s.replace(/[^a-zA-Z0-9]/g,'_'); }
+
+// ── DROPDOWNS ─────────────────────────────────────────────────────────────
+function buildDropdowns() {
+  var rp = document.getElementById('region-panel');
+  Object.keys(REGIONS).forEach(function(r) {
+    var d = document.createElement('div');
+    d.className = 'dd-opt';
+    d.innerHTML = '<div class="chk" id="chk_r_' + safeId(r) + '"></div>' + esc(r);
+    d.addEventListener('click', function(e){ e.stopPropagation(); toggleRegion(r); });
+    rp.appendChild(d);
+  });
+
+  var cp = document.getElementById('country-panel');
+  Object.keys(REGIONS).forEach(function(grp) {
+    var lbl = document.createElement('div');
+    lbl.className = 'grp-lbl';
+    lbl.textContent = grp;
+    cp.appendChild(lbl);
+    REGIONS[grp].forEach(function(c) {
+      var d = document.createElement('div');
+      d.className = 'dd-opt';
+      d.innerHTML = '<div class="chk" id="chk_c_' + safeId(c) + '"></div>' + esc(c);
+      d.addEventListener('click', function(e){ e.stopPropagation(); toggleCountry(c); });
+      cp.appendChild(d);
+    });
+  });
+}
+
+function openDropdown(panelId) {
+  var panel = document.getElementById(panelId);
+  var isOpen = panel.classList.contains('open');
+  closeAllDropdowns();
   if (!isOpen) panel.classList.add('open');
 }
-document.addEventListener('click', e => {
-  if (!e.target.closest('.dropdown-wrapper')) {
-    document.querySelectorAll('.dropdown-panel.open').forEach(p => p.classList.remove('open'));
-  }
+function closeAllDropdowns() {
+  document.querySelectorAll('.dd-panel.open').forEach(function(p){ p.classList.remove('open'); });
+}
+
+document.getElementById('region-btn').addEventListener('click', function(e){
+  e.stopPropagation(); openDropdown('region-panel');
 });
+document.getElementById('country-btn').addEventListener('click', function(e){
+  e.stopPropagation(); openDropdown('country-panel');
+});
+document.addEventListener('click', closeAllDropdowns);
 
-function buildDropdowns() {
-  // Regions
-  const rPanel = document.getElementById('region-panel');
-  Object.keys(REGIONS).forEach(r => {
-    const div = document.createElement('div');
-    div.className = 'option';
-    div.dataset.value = r;
-    div.dataset.type = 'region';
-    div.innerHTML = `<div class="checkbox" id="cb-region-${r.replace(/\s/g,'_')}">${state.regions.includes(r) ? iconCheck : ''}</div>${r}`;
-    div.addEventListener('click', () => toggleFilter('region', r));
-    rPanel.appendChild(div);
-  });
-
-  // Countries grouped
-  const cPanel = document.getElementById('country-panel');
-  Object.entries(REGIONS).forEach(([group, countries]) => {
-    const lbl = document.createElement('div');
-    lbl.className = 'region-label';
-    lbl.textContent = group;
-    cPanel.appendChild(lbl);
-    countries.forEach(c => {
-      const div = document.createElement('div');
-      div.className = 'option';
-      div.dataset.value = c;
-      div.dataset.type = 'country';
-      div.innerHTML = `<div class="checkbox" id="cb-country-${c.replace(/\s/g,'_')}">${state.countries.includes(c) ? iconCheck : ''}</div>${c}`;
-      div.addEventListener('click', () => toggleFilter('country', c));
-      cPanel.appendChild(div);
-    });
-  });
+// ── TOGGLE FILTERS ────────────────────────────────────────────────────────
+function toggleRegion(r) {
+  var i = selRegions.indexOf(r);
+  if (i === -1) selRegions.push(r); else selRegions.splice(i,1);
+  var chk = document.getElementById('chk_r_' + safeId(r));
+  if (chk) { chk.classList.toggle('on', selRegions.indexOf(r) !== -1); chk.innerHTML = selRegions.indexOf(r) !== -1 ? ICO_CHECK : ''; }
+  updateBadge('region', selRegions.length);
+  render();
 }
-
-function toggleFilter(type, value) {
-  const arr = type === 'region' ? state.regions : state.countries;
-  const idx = arr.indexOf(value);
-  if (idx === -1) arr.push(value); else arr.splice(idx, 1);
-  updateCheckbox(type, value, arr.includes(value));
-  updateCountBadge(type);
-  applyFilters();
+function toggleCountry(c) {
+  var i = selCountries.indexOf(c);
+  if (i === -1) selCountries.push(c); else selCountries.splice(i,1);
+  var chk = document.getElementById('chk_c_' + safeId(c));
+  if (chk) { chk.classList.toggle('on', selCountries.indexOf(c) !== -1); chk.innerHTML = selCountries.indexOf(c) !== -1 ? ICO_CHECK : ''; }
+  updateBadge('country', selCountries.length);
+  render();
 }
-
-function updateCheckbox(type, value, checked) {
-  const id = `cb-${type}-${value.replace(/\s/g,'_')}`;
-  const el = document.getElementById(id);
+function updateBadge(type, n) {
+  var el = document.getElementById(type + '-badge');
   if (!el) return;
-  el.classList.toggle('checked', checked);
-  el.innerHTML = checked ? iconCheck : '';
+  el.textContent = n;
+  el.style.display = n > 0 ? 'inline' : 'none';
+}
+function clearAll() {
+  selRegions.forEach(function(r){
+    var chk = document.getElementById('chk_r_' + safeId(r));
+    if (chk){ chk.classList.remove('on'); chk.innerHTML = ''; }
+  });
+  selCountries.forEach(function(c){
+    var chk = document.getElementById('chk_c_' + safeId(c));
+    if (chk){ chk.classList.remove('on'); chk.innerHTML = ''; }
+  });
+  selRegions = []; selCountries = [];
+  updateBadge('region',0); updateBadge('country',0);
+  render();
 }
 
-function updateCountBadge(type) {
-  const arr = type === 'region' ? state.regions : state.countries;
-  const el = document.getElementById(`${type}-count`);
-  if (!el) return;
-  el.textContent = arr.length;
-  el.style.display = arr.length ? 'inline' : 'none';
-}
-
-// ── FILTER & RENDER ───────────────────────────────────────────────────────
-function applyFilters() {
-  const q = document.getElementById('search-input').value.trim().toLowerCase();
-  let results = PAYMENT_METHODS.filter(pm => {
-    let pass = true;
-    if (q) {
-      const matchCountries = pm.countries.some(c => c.toLowerCase().includes(q));
-      const matchName = pm.name.toLowerCase().includes(q);
-      pass = matchCountries || matchName;
-    }
-    if (state.regions.length) pass = pass && pm.regions.some(r => state.regions.includes(r));
-    if (state.countries.length) pass = pass && pm.countries.some(c => state.countries.includes(c));
+// ── RENDER ────────────────────────────────────────────────────────────────
+function getFiltered() {
+  var q = document.getElementById('search-input').value.trim().toLowerCase();
+  return PM.filter(function(pm) {
+    var pass = true;
+    if (q) pass = pm.name.toLowerCase().indexOf(q) !== -1 || pm.countries.some(function(c){ return c.toLowerCase().indexOf(q) !== -1; });
+    if (pass && selRegions.length) pass = pm.regions.some(function(r){ return selRegions.indexOf(r) !== -1; });
+    if (pass && selCountries.length) pass = pm.countries.some(function(c){ return selCountries.indexOf(c) !== -1; });
     return pass;
   });
-
-  renderActiveFilters();
-  renderResults(results);
 }
 
-function renderActiveFilters() {
-  const container = document.getElementById('active-filters');
-  const hasFilters = state.regions.length || state.countries.length;
-  container.style.display = hasFilters ? 'flex' : 'none';
-  container.innerHTML = '';
-  state.regions.forEach(r => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-tag';
-    btn.innerHTML = `${r} ${iconX}`;
-    btn.addEventListener('click', () => toggleFilter('region', r));
-    container.appendChild(btn);
-  });
-  state.countries.forEach(c => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-tag';
-    btn.innerHTML = `${c} ${iconX}`;
-    btn.addEventListener('click', () => toggleFilter('country', c));
-    container.appendChild(btn);
-  });
-  if (hasFilters) {
-    const clr = document.createElement('button');
-    clr.className = 'clear-all';
-    clr.textContent = 'Clear all';
-    clr.addEventListener('click', () => {
-      [...state.regions].forEach(r => { state.regions.splice(0); updateCheckbox('region', r, false); });
-      [...state.countries].forEach(c => { state.countries.splice(0); updateCheckbox('country', c, false); });
-      state.regions.length = 0; state.countries.length = 0;
-      updateCountBadge('region'); updateCountBadge('country');
-      applyFilters();
-    });
-    container.appendChild(clr);
-  }
-}
-
-function renderResults(methods) {
-  const grid = document.getElementById('apm-grid');
-  const hasFilters = state.regions.length || state.countries.length || document.getElementById('search-input').value.trim();
-  document.getElementById('results-count').textContent =
-    `Showing ${methods.length} of ${PAYMENT_METHODS.length} payment methods${hasFilters ? ' (filtered)' : ''}`;
-
-  if (!methods.length) {
-    grid.innerHTML = '<div class="no-results">No payment methods match your current filters. Try adjusting your selection.</div>';
+function render() {
+  renderActiveTags();
+  var filtered = getFiltered();
+  var q = document.getElementById('search-input').value.trim();
+  var hasF = selRegions.length || selCountries.length || q;
+  document.getElementById('res-count').textContent =
+    'Showing ' + filtered.length + ' of ' + PM.length + ' payment methods' + (hasF ? ' (filtered)' : '');
+  var grid = document.getElementById('apm-grid');
+  grid.innerHTML = '';
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-res">No payment methods match your current filters. Try adjusting your selection.</div>';
     return;
   }
-  grid.innerHTML = '';
-  methods.forEach(pm => grid.appendChild(buildCard(pm)));
+  filtered.forEach(function(pm){ grid.appendChild(buildCard(pm)); });
+}
+
+function renderActiveTags() {
+  var af = document.getElementById('active-filters');
+  af.innerHTML = '';
+  var hasF = selRegions.length || selCountries.length;
+  if (!hasF) return;
+  selRegions.forEach(function(r){
+    var b = document.createElement('button');
+    b.className = 'ftag';
+    b.innerHTML = esc(r) + ' ' + ICO_X;
+    b.addEventListener('click', function(){ toggleRegion(r); });
+    af.appendChild(b);
+  });
+  selCountries.forEach(function(c){
+    var b = document.createElement('button');
+    b.className = 'ftag';
+    b.innerHTML = esc(c) + ' ' + ICO_X;
+    b.addEventListener('click', function(){ toggleCountry(c); });
+    af.appendChild(b);
+  });
+  var clr = document.createElement('button');
+  clr.className = 'clear-btn';
+  clr.textContent = 'Clear all';
+  clr.addEventListener('click', clearAll);
+  af.appendChild(clr);
 }
 
 function buildCard(pm) {
-  const card = document.createElement('div');
+  var card = document.createElement('div');
   card.className = 'apm-card';
-  card.id = `card-${pm.id}`;
-
-  const currencyDisplay = pm.currencies.length > 5 ? `${pm.currencies.length} currencies` : pm.currencies.join(', ');
-
-  card.innerHTML = `
-    <div class="apm-card-header">
-      <div class="apm-logo" style="background:${pm.color}">${pm.logo}</div>
-      <div class="apm-header-text">
-        <h3>${pm.name}</h3>
-        <p class="apm-hook">${pm.hook}</p>
-      </div>
-      <button class="apm-expand-btn" onclick="toggleDetail('${pm.id}')">View details</button>
-    </div>
-    <div class="apm-meta-row">
-      <span class="meta-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        ${pm.countries.length} countries
-      </span>
-      <span class="meta-chip">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        ${pm.authorizationTime}
-      </span>
-      <span class="meta-chip">${currencyDisplay}</span>
-      ${pm.integrationTypes.api ? '<span class="detail-tag tag-api">API</span>' : ''}
-      ${pm.integrationTypes.noCode ? '<span class="detail-tag tag-nocode">No-Code</span>' : ''}
-      ${pm.integrationTypes.mobile ? '<span class="detail-tag tag-mobile">Mobile SDK</span>' : ''}
-    </div>
-    <div class="apm-detail" id="detail-${pm.id}">
-      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;line-height:1.6">${pm.description}</p>
-      <div class="detail-grid">
-        <div class="detail-block">
-          <h4>Integration Types</h4>
-          ${pm.apiOptions.length ? `<div style="margin-bottom:8px"><span style="font-size:11px;font-weight:600;color:var(--accent)">API</span><ul>${pm.apiOptions.map(o=>`<li>${o}</li>`).join('')}</ul></div>` : ''}
-          ${pm.noCodeOptions.length ? `<div style="margin-bottom:8px"><span style="font-size:11px;font-weight:600;color:var(--success)">No-Code</span><ul>${pm.noCodeOptions.map(o=>`<li>${o}</li>`).join('')}</ul></div>` : ''}
-          ${pm.mobileOptions.length ? `<div><span style="font-size:11px;font-weight:600;color:var(--warning)">Mobile</span><ul>${pm.mobileOptions.map(o=>`<li>${o}</li>`).join('')}</ul></div>` : ''}
-        </div>
-        <div class="detail-block">
-          <h4>Features</h4>
-          <ul>${pm.features.map(f=>`<li>${f}</li>`).join('')}</ul>
-        </div>
-        <div class="detail-block">
-          <h4>Transaction Types</h4>
-          <table class="tx-table">
-            <tr><td>Sale</td><td>${pm.transactionTypes.sale ? '<span class="tag-yes">✓ Supported</span>' : '<span class="tag-no">—</span>'}</td></tr>
-            <tr><td>Authorization</td><td>${pm.transactionTypes.authorization || '—'}</td></tr>
-            <tr><td>Capture</td><td>${pm.transactionTypes.capture || '—'}</td></tr>
-            <tr><td>Refund</td><td>${pm.transactionTypes.refund || '—'}</td></tr>
-            <tr><td>Disputes</td><td>${pm.transactionTypes.dispute ? '<span class="tag-yes">✓ Supported</span>' : '<span class="tag-no">Not applicable</span>'}</td></tr>
-          </table>
-        </div>
-        <div class="detail-block">
-          <h4>Currencies</h4>
-          <div class="currency-row">${pm.currencies.map(c=>`<span class="currency-chip">${c}</span>`).join('')}</div>
-          <div style="margin-top:12px"><h4>Minimum Amount</h4><p style="font-size:13px">${pm.minAmount}</p></div>
-          <div style="margin-top:12px"><h4>Refund Timeline</h4><p style="font-size:13px">${pm.refundTime}</p></div>
-        </div>
-      </div>
-      <div class="quick-links">
-        <a href="${pm.quickLinks.overview}" class="quick-link">${pm.name} Overview ${iconArr}</a>
-        <a href="${pm.quickLinks.integration}" class="quick-link">Integration Steps ${iconArr}</a>
-        <a href="${pm.quickLinks.reporting}" class="quick-link">Reporting ${iconArr}</a>
-      </div>
-      <div class="cta-banner">
-        <p>Want to add ${pm.name} to your checkout?</p>
-        <button class="cta-btn">Get started →</button>
-      </div>
-    </div>
-  `;
+  card.id = 'card_' + pm.id;
+  var curDisplay = pm.currencies.length > 5 ? pm.currencies.length + ' currencies' : pm.currencies.join(', ');
+  var metaTags = '';
+  if (pm.intg.api) metaTags += '<span class="dtag t-api">API</span>';
+  if (pm.intg.nc)  metaTags += '<span class="dtag t-nc">No-Code</span>';
+  if (pm.intg.mob) metaTags += '<span class="dtag t-mob">Mobile SDK</span>';
+  var apiBlock = pm.apiOpts.length ? '<div style="margin-bottom:8px"><span style="font-size:11px;font-weight:600;color:var(--accent)">API</span><ul>' + pm.apiOpts.map(function(o){return '<li>'+esc(o)+'</li>';}).join('') + '</ul></div>' : '';
+  var ncBlock  = pm.ncOpts.length  ? '<div style="margin-bottom:8px"><span style="font-size:11px;font-weight:600;color:var(--success)">No-Code</span><ul>' + pm.ncOpts.map(function(o){return '<li>'+esc(o)+'</li>';}).join('') + '</ul></div>' : '';
+  var mobBlock = pm.mobOpts.length ? '<div><span style="font-size:11px;font-weight:600;color:var(--warning)">Mobile</span><ul>' + pm.mobOpts.map(function(o){return '<li>'+esc(o)+'</li>';}).join('') + '</ul></div>' : '';
+  var featList = pm.features.map(function(f){return '<li>'+esc(f)+'</li>';}).join('');
+  var curChips = pm.currencies.map(function(c){return '<span class="cur-chip">'+esc(c)+'</span>';}).join('');
+  card.innerHTML =
+    '<div class="card-head">' +
+      '<div class="apm-logo" style="background:'+esc(pm.color)+'">'+esc(pm.logo)+'</div>' +
+      '<div class="head-text"><h3>'+esc(pm.name)+'</h3><p class="apm-hook">'+esc(pm.hook)+'</p></div>' +
+      '<button class="expand-btn" id="ebtn_'+pm.id+'">View details</button>' +
+    '</div>' +
+    '<div class="meta-row">' +
+      '<span class="meta-chip">'+ICO_GLOBE+' '+pm.countries.length+' countries</span>' +
+      '<span class="meta-chip">'+ICO_CLOCK+' '+esc(pm.authTime)+'</span>' +
+      '<span class="meta-chip">'+esc(curDisplay)+'</span>' +
+      metaTags +
+    '</div>' +
+    '<div class="detail" id="det_'+pm.id+'">' +
+      '<p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;line-height:1.6">'+esc(pm.desc)+'</p>' +
+      '<div class="d-grid">' +
+        '<div class="d-block"><h4>Integration Types</h4>'+apiBlock+ncBlock+mobBlock+'</div>' +
+        '<div class="d-block"><h4>Features</h4><ul>'+featList+'</ul></div>' +
+        '<div class="d-block"><h4>Transaction Types</h4>' +
+          '<table class="tx-tbl"><tbody>' +
+            '<tr><td>Sale</td><td>'+(pm.tx.sale?'<span class="t-yes">&#10003; Supported</span>':'<span class="t-no">-</span>')+'</td></tr>' +
+            '<tr><td>Authorization</td><td>'+esc(pm.tx.auth||'-')+'</td></tr>' +
+            '<tr><td>Capture</td><td>'+esc(pm.tx.cap||'-')+'</td></tr>' +
+            '<tr><td>Refund</td><td>'+esc(pm.tx.ref||'-')+'</td></tr>' +
+            '<tr><td>Disputes</td><td>'+(pm.tx.disp?'<span class="t-yes">&#10003; Supported</span>':'<span class="t-no">Not applicable</span>')+'</td></tr>' +
+          '</tbody></table></div>' +
+        '<div class="d-block"><h4>Currencies</h4><div>'+curChips+'</div>' +
+          '<div style="margin-top:12px"><h4>Minimum Amount</h4><p style="font-size:13px">'+esc(pm.minAmt)+'</p></div>' +
+          '<div style="margin-top:12px"><h4>Refund Timeline</h4><p style="font-size:13px">'+esc(pm.refTime)+'</p></div></div>' +
+      '</div>' +
+      '<div class="q-links">' +
+        '<a href="'+esc(pm.links.overview)+'" class="q-link">'+esc(pm.name)+' Overview '+ICO_ARR+'</a>' +
+        '<a href="'+esc(pm.links.integration)+'" class="q-link">Integration Steps '+ICO_ARR+'</a>' +
+        '<a href="'+esc(pm.links.reporting)+'" class="q-link">Reporting '+ICO_ARR+'</a>' +
+      '</div>' +
+      '<div class="cta-banner"><p>Want to add '+esc(pm.name)+' to your checkout?</p><button class="cta-btn">Get started &#8594;</button></div>' +
+    '</div>';
+  card.querySelector('.expand-btn').addEventListener('click', function(){ toggleDetail(pm.id); });
   return card;
 }
 
 function toggleDetail(id) {
-  const detail = document.getElementById(`detail-${id}`);
-  const btn = document.querySelector(`#card-${id} .apm-expand-btn`);
-  const isOpen = detail.classList.contains('open');
-  detail.classList.toggle('open', !isOpen);
-  btn.textContent = isOpen ? 'View details' : 'Collapse';
+  var det = document.getElementById('det_' + id);
+  var btn = document.getElementById('ebtn_' + id);
+  if (!det || !btn) return;
+  var open = det.classList.toggle('open');
+  btn.textContent = open ? 'Collapse' : 'View details';
 }
 
 // ── FAQ ───────────────────────────────────────────────────────────────────
 function buildFAQ() {
-  const list = document.getElementById('faq-list');
-  FAQ_ITEMS.forEach((item, i) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'faq-item';
-    wrapper.innerHTML = `
-      <button class="faq-q" id="faq-btn-${i}" onclick="toggleFAQ(${i})">${item.q} ${iconChevR}</button>
-      <div class="faq-a" id="faq-a-${i}">${item.a}</div>
-    `;
-    list.appendChild(wrapper);
+  var list = document.getElementById('faq-list');
+  FAQ.forEach(function(item, i) {
+    var wrap = document.createElement('div');
+    wrap.className = 'faq-item';
+    var btn = document.createElement('button');
+    btn.className = 'faq-q';
+    btn.innerHTML = esc(item.q) + ICO_CHEVR;
+    var ans = document.createElement('div');
+    ans.className = 'faq-a';
+    ans.textContent = item.a;
+    btn.addEventListener('click', function(){
+      var open = ans.classList.toggle('open');
+      btn.classList.toggle('open', open);
+    });
+    wrap.appendChild(btn);
+    wrap.appendChild(ans);
+    list.appendChild(wrap);
   });
-}
-
-function toggleFAQ(i) {
-  const ans = document.getElementById(`faq-a-${i}`);
-  const btn = document.getElementById(`faq-btn-${i}`);
-  const open = ans.classList.toggle('open');
-  btn.classList.toggle('open', open);
 }
 
 // ── BRANDS ────────────────────────────────────────────────────────────────
 function buildBrands() {
-  const row = document.getElementById('brands-row');
-  TRUSTED_BRANDS.forEach(b => {
-    const el = document.createElement('div');
-    el.className = 'brand-placeholder';
+  var row = document.getElementById('brands-row');
+  BRANDS.forEach(function(b){
+    var el = document.createElement('div');
+    el.className = 'brand-ph';
     el.textContent = b;
     row.appendChild(el);
   });
@@ -630,30 +591,34 @@ function buildBrands() {
 
 // ── NPS ───────────────────────────────────────────────────────────────────
 function buildNPS() {
-  const bar = document.getElementById('nps-bar');
-  bar.innerHTML = `
-    <p>How easy was it to understand our payment methods offering?</p>
-    <div class="nps-scores" id="nps-scores">
-      ${[...Array(11)].map((_,i)=>`<button class="nps-btn" onclick="selectNPS(${i})">${i}</button>`).join('')}
-    </div>
-    <div class="nps-labels"><span>Not easy at all</span><span>Extremely easy</span></div>
-  `;
+  var wrap = document.getElementById('nps-wrap');
+  var btns = '';
+  for (var i = 0; i <= 10; i++) btns += '<button class="nps-btn" data-score="'+i+'">' + i + '</button>';
+  wrap.innerHTML =
+    '<p>How easy was it to understand our payment methods offering?</p>' +
+    '<div class="nps-scores">' + btns + '</div>' +
+    '<div class="nps-labels"><span>Not easy at all</span><span>Extremely easy</span></div>';
+  wrap.querySelectorAll('.nps-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var score = this.dataset.score;
+      wrap.querySelectorAll('.nps-btn').forEach(function(b){ b.classList.remove('on'); });
+      this.classList.add('on');
+      setTimeout(function(){
+        wrap.innerHTML = '<div class="nps-ty">Thank you for your feedback! Your score of ' + score + ' has been recorded.</div>';
+      }, 300);
+    });
+  });
 }
 
-function selectNPS(score) {
-  document.querySelectorAll('.nps-btn').forEach((b,i) => b.classList.toggle('selected', i === score));
-  setTimeout(() => {
-    document.getElementById('nps-bar').innerHTML =
-      `<div class="nps-thankyou">Thank you for your feedback! Your score of ${score} has been recorded.</div>`;
-  }, 300);
-}
+// ── SEARCH ────────────────────────────────────────────────────────────────
+document.getElementById('search-input').addEventListener('input', render);
 
 // ── INIT ──────────────────────────────────────────────────────────────────
 buildDropdowns();
 buildFAQ();
 buildBrands();
 buildNPS();
-applyFilters();
+render();
 </script>
 </body>
 </html>
